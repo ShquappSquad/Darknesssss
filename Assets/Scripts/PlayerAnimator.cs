@@ -42,7 +42,7 @@ namespace TarodevController {
             // Splat
             if (_player.LandingThisFrame) {
                 _anim.SetTrigger(GroundedKey);
-                _source.PlayOneShot(_footsteps[Random.Range(0, _footsteps.Length)]);
+                //_source.PlayOneShot(_footsteps[Random.Range(0, _footsteps.Length)]);
             }
 
             // Jump effects
