@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightPan : MonoBehaviour
+public class BeamLightPan : MonoBehaviour
 {
     public Transform player;
 
