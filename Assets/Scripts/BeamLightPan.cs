@@ -5,11 +5,17 @@ using UnityEngine;
 public class BeamLightPan : MonoBehaviour
 {
     public Transform player;
-    public float angleDeg;
+    public GameObject bubbleLight;
+    private float angleDeg;
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            swapLight();
+        }
+
         angleDeg = calcBeamAngle(); // Grab the angle (in degress) of the players mouse (Where the beam should go)
         moveBeam(angleDeg); // Rotate the light object with the new beam angle
 
@@ -36,5 +42,10 @@ public class BeamLightPan : MonoBehaviour
         angleRad = Mathf.Atan2(xDiff , yDiff);
 
         return angleRad * Mathf.Rad2Deg;
+    }
+
+    private void swapLight()
+    {
+        bubbleLight.SetActive(true);
     }
 }
