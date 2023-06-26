@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class monsterHealth : MonoBehaviour
 {
-    private float health, maxHealth = 30f;
+    private float currentHealth, maxHealth = 30f;
     // Start is called before the first frame update
     void Start()
     {
-        health = maxHealth;
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -19,10 +19,18 @@ public class monsterHealth : MonoBehaviour
 
     public void takeDamage(float damageAmount)
     {
-        health -= damageAmount;
-        if (health <= 0)
+        currentHealth -= damageAmount;
+
+        Debug.Log(name + " has " + currentHealth + " health");
+
+        if (currentHealth <= 0)
         {
-            // Destroy();
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }
