@@ -5,6 +5,7 @@ using UnityEngine;
 public class BubbleLightPan : MonoBehaviour
 {
     public Transform player;
+    public float damageAmount;
 
     // Update is called once per frame
     void Update()
