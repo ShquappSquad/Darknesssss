@@ -9,13 +9,16 @@ public class BubbleLightPan : MonoBehaviour
     public Transform player;
     public float damageAmount;
 
-    public UnityEngine.Rendering.Universal.Light2D lantern;
+    // public UnityEngine.Rendering.Universal.Light2D lantern;
 
     public float attackRange;
+    public LayerMask enemyLayers;
 
     void Start()
     {
-        // attackRange = GetComponent<UnityEngine.Rendering.Universal.Light2D>().Radius.Inner;
+        // attackRange = GetComponent<UnityEngine.Rendering.Universal.Light2D>().radius.inner;
+        attackRange = 2.5f;
+        damageAmount = 0.02f;
     }
 
     // Update is called once per frame
@@ -28,6 +31,12 @@ public class BubbleLightPan : MonoBehaviour
 
     void Attack()
     {
-        Physics2D.OverlapCircleAll(player.position, attackRange);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(player.position, attackRange, enemyLayers);
+
+        foreach(Collider2D enemy in hitEnemies)
+        {
+            // Debug.Log("We hit " + enemy.name);
+            enemy.GetComponent<monsterHealth>().takeDamage(damageAmount);
+        }
     }
 }
