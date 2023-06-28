@@ -9,14 +9,11 @@ public class BubbleLightPan : MonoBehaviour
     public Transform player;
     public float damageAmount;
 
-    // public UnityEngine.Rendering.Universal.Light2D lantern;
-
     public float attackRange;
     public LayerMask enemyLayers;
 
     void Start()
     {
-        // attackRange = GetComponent<UnityEngine.Rendering.Universal.Light2D>().radius.inner;
         attackRange = 2.5f;
         damageAmount = 0.02f;
     }
@@ -26,7 +23,6 @@ public class BubbleLightPan : MonoBehaviour
     {
         transform.position = new Vector3(player.position.x, player.position.y - 0.75f, 0);
         Attack();
-
     }
 
     void Attack()
