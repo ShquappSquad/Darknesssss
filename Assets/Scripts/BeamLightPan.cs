@@ -10,8 +10,11 @@ public class BeamLightPan : MonoBehaviour
     public float damageAmount;
     public LayerMask enemyLayers;
 
-    private float distance = 10f;
+    private float distance = 5f;
     RaycastHit2D enemiesHit;
+
+    float xDiff;
+    float yDiff;
 
     void Start()
     {
@@ -43,8 +46,6 @@ public class BeamLightPan : MonoBehaviour
     }
 
     private float calcBeamAngle() {
-        float xDiff;
-        float yDiff;
         Vector3 mousePos = Input.mousePosition; // Grab the position of player's mouse
 
         // Calculate the x and y coordinates of the mouse relative to the player
@@ -60,19 +61,18 @@ public class BeamLightPan : MonoBehaviour
     }
 
     private void Attack() {
-        enemiesHit = Physics2D.Raycast(transform.position, new Vector2(Input.mousePosition.x - (Screen.width/2), Input.mousePosition.y - (Screen.height/2)).normalized, distance, enemyLayers);
+        enemiesHit = Physics2D.Raycast(transform.position, new Vector2(xDiff, yDiff).normalized, distance, enemyLayers);
 
         // new Vector2(Input.mousePosition.x, Input.mousePosition.y),
         if (enemiesHit)
         {
             enemiesHit.collider.GetComponent<monsterHealth>().takeDamage(damageAmount);
-            // Debug.Log("Hit something : " + enemiesHit.collider.name);
-            // Debug.DrawRay(transform.position, new Vector2(Input.mousePosition.x - (Screen.width/2), Input.mousePosition.y - (Screen.height/2)).normalized, Color.yellow);
+            Debug.Log("Hit something : " + enemiesHit.collider.name);
+            Debug.DrawRay(transform.position, new Vector2(xDiff, yDiff).normalized, Color.yellow);
         }
         else
         {
-            // Debug.DrawRay(transform.position, transform.position + transform.right * distance, Color.red);
-            // Debug.DrawRay(transform.position, new Vector2(Input.mousePosition.x - (Screen.width/2), Input.mousePosition.y - (Screen.height/2)).normalized, Color.red);
+            Debug.DrawRay(transform.position, new Vector2(xDiff, yDiff).normalized, Color.red);
         }
     }
 }
