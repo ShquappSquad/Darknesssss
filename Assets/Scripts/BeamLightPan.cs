@@ -63,7 +63,6 @@ public class BeamLightPan : MonoBehaviour
     private void Attack() {
         enemiesHit = Physics2D.RaycastAll(transform.position, new Vector2(xDiff, yDiff).normalized, distance, enemyLayers);
 
-        // new Vector2(Input.mousePosition.x, Input.mousePosition.y),
         if (enemiesHit.Length > 0)
         {
             for (int i=0; i < enemiesHit.Length; i++)
@@ -71,13 +70,7 @@ public class BeamLightPan : MonoBehaviour
                 // Debug.Log(enemiesHit[i].collider.gameObject.name);
                 enemiesHit[i].collider.GetComponent<monsterHealth>().takeDamage(damageAmount);
             }
-            // enemiesHit.collider.GetComponent<monsterHealth>().takeDamage(damageAmount);
-            // Debug.Log("Hit something : " + enemiesHit.collider.name);
             // Debug.DrawRay(transform.position, new Vector2(xDiff, yDiff).normalized, Color.yellow);
-        }
-        else
-        {
-            Debug.DrawRay(transform.position, new Vector2(xDiff, yDiff).normalized, Color.red);
         }
     }
 }
