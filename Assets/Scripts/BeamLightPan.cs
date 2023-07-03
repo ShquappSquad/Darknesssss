@@ -65,12 +65,17 @@ public class BeamLightPan : MonoBehaviour
 
         if (enemiesHit.Length > 0)
         {
-            for (int i=0; i < enemiesHit.Length; i++)
+            for (int i = 0; i < enemiesHit.Length; i++)
             {
+                float enemyDistance = (player.position - enemiesHit[i].collider.transform.position).magnitude;
+                // Debug.Log(enemyDistance);
+                float dealDamage =  (distance / enemyDistance) * damageAmount;
+                // Debug.Log(enemiesHit[i].collider.transform.position);
                 // Debug.Log(enemiesHit[i].collider.gameObject.name);
-                enemiesHit[i].collider.GetComponent<monsterHealth>().takeDamage(damageAmount);
+                Debug.Log("Enemy took " + dealDamage + " damage.");
+                enemiesHit[i].collider.GetComponent<monsterHealth>().takeDamage(dealDamage);
             }
-            // Debug.DrawRay(transform.position, new Vector2(xDiff, yDiff).normalized, Color.yellow);
+            Debug.DrawRay(transform.position, new Vector2(xDiff, yDiff).normalized, Color.yellow);
         }
     }
 }
