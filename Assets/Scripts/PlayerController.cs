@@ -37,8 +37,8 @@ namespace TarodevController {
 
             CalculateWalk(); // Horizontal movement
             CalculateJumpApex(); // Affects fall speed, so calculate before gravity
-            CalculateGravity(); // Vertical movement
             CalculateJump(); // Possibly overrides vertical
+            CalculateGravity();
 
             MoveCharacter(); // Actually perform the axis movement
         }
@@ -116,29 +116,29 @@ namespace TarodevController {
             }
         }
 
-        // private void OnDrawGizmos() {
-        //     // Bounds
-        //     Gizmos.color = Color.yellow;
-        //     Gizmos.DrawWireCube(transform.position + _characterBounds.center, _characterBounds.size);
+        private void OnDrawGizmos() {
+            // Bounds
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireCube(transform.position + _characterBounds.center, _characterBounds.size);
 
-        //     // Rays
-        //     if (!Application.isPlaying) {
-        //         CalculateRayRanged();
-        //         Gizmos.color = Color.blue;
-        //         foreach (var range in new List<RayRange> { _raysUp, _raysRight, _raysDown, _raysLeft }) {
-        //             foreach (var point in EvaluateRayPositions(range)) {
-        //                 Gizmos.DrawRay(point, range.Dir * _detectionRayLength);
-        //             }
-        //         }
-        //     }
+            // Rays
+            if (!Application.isPlaying) {
+                CalculateRayRanged();
+                Gizmos.color = Color.blue;
+                foreach (var range in new List<RayRange> { _raysUp, _raysRight, _raysDown, _raysLeft }) {
+                    foreach (var point in EvaluateRayPositions(range)) {
+                        Gizmos.DrawRay(point, range.Dir * _detectionRayLength);
+                    }
+                }
+            }
 
-        //     if (!Application.isPlaying) return;
+            if (!Application.isPlaying) return;
 
-        //     // Draw the future position. Handy for visualizing gravity
-        //     Gizmos.color = Color.red;
-        //     var move = new Vector3(_currentHorizontalSpeed, _currentVerticalSpeed) * Time.deltaTime;
-        //     Gizmos.DrawWireCube(transform.position + move, _characterBounds.size);
-        // }
+            // Draw the future position. Handy for visualizing gravity
+            Gizmos.color = Color.red;
+            var move = new Vector3(_currentHorizontalSpeed, _currentVerticalSpeed) * Time.deltaTime;
+            Gizmos.DrawWireCube(transform.position + move, _characterBounds.size);
+        }
 
         #endregion
 
@@ -183,6 +183,7 @@ namespace TarodevController {
         private float _fallSpeed;
 
         private void CalculateGravity() {
+            Debug.Log(_currentVerticalSpeed);
             if (_colDown) {
                 // Move out of the ground
                 if (_currentVerticalSpeed < 0) _currentVerticalSpeed = 0;
