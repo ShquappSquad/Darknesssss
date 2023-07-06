@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4995715063455801465}
   - component: {fileID: 2369156568696375853}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 7691350125025781096}
   - component: {fileID: 7627811210058758669}
   - component: {fileID: -5213625791235797164}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8877185258152480010}
   - component: {fileID: 7899357800537158048}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5910832168248201178}
   - component: {fileID: 347213781558378109}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

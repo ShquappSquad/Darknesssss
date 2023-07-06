@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7691350125025781096}
   - component: {fileID: 7627811210058758669}
   - component: {fileID: -3096427512550959424}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Dock v2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8127221497470242058}
   - component: {fileID: 4399538720838487283}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
